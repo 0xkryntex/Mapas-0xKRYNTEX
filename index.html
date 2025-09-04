@@ -10,15 +10,39 @@
       font-family: 'Orbitron', sans-serif;
     }
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+    /* Logo atrás do título */
+    .logo-bg {
+      position: relative;
+      display: inline-block;
+    }
+    .logo-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("sua-logo.png") no-repeat center;
+      background-size: 150px; /* tamanho da logo */
+      opacity: 0.2; /* transparência */
+      z-index: -1;
+    }
   </style>
 </head>
 <body class="bg-black text-white">
 
-  <header class="text-center py-10 bg-gradient-to-r from-indigo-900 to-purple-900 shadow-lg">
-    <h1 class="text-4xl font-extrabold text-cyan-400 tracking-wider drop-shadow-md">MAPAS FREE FIRE</h1>
-    <p class="text-sm mt-2 text-gray-300">Criados por <span class="text-white font-bold">0xKRYNTEX</span></p>
+  <!-- HEADER -->
+  <header class="text-center py-10 bg-gradient-to-r from-indigo-900 to-purple-900 shadow-lg relative overflow-hidden">
+    
+    <!-- Título com logo no fundo -->
+    <h1 class="text-4xl font-extrabold text-cyan-400 tracking-wider drop-shadow-md logo-bg">
+      MAPAS FREE FIRE
+    </h1>
+
+    <p class="text-sm mt-2 text-gray-300">
+      Criados por <span class="text-white font-bold">0xKRYNTEX</span>
+    </p>
   </header>
 
+  <!-- MAIN -->
   <main class="p-6 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     
     <!-- Card 1 -->
@@ -31,9 +55,9 @@
       </div>
     </div>
 
-
   </main>
 
+  <!-- FOOTER -->
   <footer class="text-center py-6 mt-10 bg-gray-800 text-gray-500 text-sm border-t border-gray-700">
     &copy; 2025 0xKRYNTEX | Todos os direitos reservados
   </footer>
