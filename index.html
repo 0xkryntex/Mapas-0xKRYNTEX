@@ -1,66 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mapas Free Fire - 0xKRYNTEX</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa Free Fire - FRONTEIRA</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&display=swap');
     body {
       font-family: 'Orbitron', sans-serif;
+      background: #0f172a;
     }
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-    /* Logo atrás do título */
-    .logo-bg {
-      position: relative;
-      display: inline-block;
+    .map-card {
+      background: #1e293b;
+      border: 2px solid #334155;
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .logo-bg::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url("sua-logo.png") no-repeat center;
-      background-size: 150px; /* tamanho da logo */
-      opacity: 0.2; /* transparência */
-      z-index: -1;
+    .map-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+    .btn-copy {
+      background: #0ea5e9;
+      transition: all 0.3s ease;
+    }
+    .btn-copy.copied {
+      background: #22c55e !important;
     }
   </style>
 </head>
-<body class="bg-black text-white">
+<body class="text-white">
 
   <!-- HEADER -->
-  <header class="text-center py-10 bg-gradient-to-r from-indigo-900 to-purple-900 shadow-lg relative overflow-hidden">
-    
-    <!-- Título com logo no fundo -->
-    <h1 class="text-4xl font-extrabold text-cyan-400 tracking-wider drop-shadow-md logo-bg">
-      MAPAS FREE FIRE
-    </h1>
-
-    <p class="text-sm mt-2 text-gray-300">
-      Criados por <span class="text-white font-bold">0xKRYNTEX</span>
-    </p>
+  <header class="text-center py-10 bg-gradient-to-r from-sky-900 to-indigo-900 shadow-lg">
+    <h1 class="text-4xl font-extrabold tracking-wider text-sky-400">MAPA FREE FIRE</h1>
+    <p class="text-gray-300 mt-2">Criado por <span class="text-white font-bold">0xKRYNTEX</span></p>
   </header>
 
   <!-- MAIN -->
-  <main class="p-6 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    
-    <!-- Card 1 -->
-    <div class="border-4 border-cyan-500 rounded-xl bg-gray-900 hover:scale-105 transition-transform duration-300 shadow-xl">
-      <img src="mapa-2v2-skins.jpg" alt="2v2 Skins" class="w-full h-48 object-cover rounded-t-lg">
-      <div class="p-5">
-        <h2 class="text-xl font-bold text-cyan-400">FRONTEIRA</h2>
-        <p class="text-gray-400 mt-2 text-sm">4M curtidas, 40M jogadores.</p>
-        <p class="mt-2 text-xs text-green-400 break-words">#FREEFIREF2D617DD34FC3C3619937D66A1ED3B1F0747</p>
+  <main class="max-w-3xl mx-auto px-6 mt-10">
+    <div class="map-card">
+      <img src="mapa-2v2-skins.jpg" alt="Mapa FRONTEIRA" class="w-full h-64 object-cover">
+      <div class="p-6">
+        <h2 class="text-2xl font-bold text-sky-400">FRONTEIRA</h2>
+        <p class="text-gray-400 mt-1 text-sm">4M curtidas • 40M jogadores</p>
+        <p id="mapCode" class="mt-4 text-green-400 text-xs break-words">#FREEFIREF2D617DD34FC3C3619937D66A1ED3B1F0747</p>
+        <button id="copyBtn" class="btn-copy mt-4 px-5 py-2 rounded-lg font-bold text-black flex items-center gap-2">
+          📋 Copiar Código
+        </button>
       </div>
     </div>
-
   </main>
 
   <!-- FOOTER -->
-  <footer class="text-center py-6 mt-10 bg-gray-800 text-gray-500 text-sm border-t border-gray-700">
+  <footer class="text-center py-6 mt-12 text-gray-500 text-sm border-t border-gray-700">
     &copy; 2025 0xKRYNTEX | Todos os direitos reservados
   </footer>
 
+  <!-- SCRIPT -->
+  <script>
+    const btn = document.getElementById('copyBtn');
+    const clipboard = new ClipboardJS('#copyBtn', {
+      target: () => document.getElementById('mapCode')
+    });
+
+    clipboard.on('success', () => {
+      btn.classList.add('copied');
+      btn.innerHTML = "✔ Código Copiado!";
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = "📋 Copiar Código";
+      }, 2000);
+    });
+  </script>
+
 </body>
-          </html>
+</html>
