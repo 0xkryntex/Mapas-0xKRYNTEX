@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa FRONTEIRA - Free Fire</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="Copie o código do mapa FRONTEIRA para Free Fire. Criado por 0xKRYNTEX.">
+  <meta property="og:title" content="Mapa FRONTEIRA - Free Fire">
+  <meta property="og:description" content="Código do mapa FRONTEIRA para Free Fire">
+  <meta property="og:type" content="website">
+  
+  <!-- FAVICON -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* EFEITO DE FUNDO MODERNO */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse at top, rgba(14, 165, 233, 0.15), transparent 50%),
+        radial-gradient(ellipse at bottom, rgba(99, 102, 241, 0.1), transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 400px;
+      margin: 20px;
+      animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .card {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(14, 165, 233, 0.1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .card:hover {
+      border-color: rgba(14, 165, 233, 0.4);
+      box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.6),
+        0 0 60px rgba(14, 165, 233, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .map-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.1);
+    }
+    
+    .content {
+      padding: 24px;
+    }
+    
+    .title {
+      font-size: 24px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 4px;
+    }
+    
+    .subtitle {
+      color: #64748b;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    
+    .btn-copy {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.5px;
+    }
+    
+    .btn-copy::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .btn-copy:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .btn-copy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
+    }
+    
+    .btn-copy:active {
+      transform: translateY(0);
+    }
+    
+    .btn-copy.copied {
+      background: linear-gradient(135deg, #10b981, #059669);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+    }
+    
+    .btn-text {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .icon {
+      font-size: 20px;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <!-- IMAGEM DO MAPA -->
+      <img 
+        src="mapa-2v2-skins.jpg" 
+        alt="Mapa FRONTEIRA Free Fire" 
+        class="map-image"
+        loading="lazy"
+        onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22220%22 viewBox=%220 0 400 220%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%231e293b%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22system-ui%22 font-size=%2224%22 fill=%22%230ea5e9%22 text-anchor=%22middle%22 dy=%22.3em%22>MAPA FRONTEIRA</text></svg>'"
+      >
+      
+      <div class="content">
+        <!-- TÍTULO -->
+        <h1 class="title">Mapa FRONTEIRA</h1>
+        <p class="subtitle">Free Fire • 0xKRYNTEX</p>
+        
+        <!-- BOTÃO COPIAR -->
+        <button id="copyBtn" class="btn-copy" aria-label="Copiar código do mapa">
+          <span class="btn-text">
+            <span class="icon">📋</span>
+            <span>Copiar Código do Mapa</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const copyBtn = document.getElementById('copyBtn');
+      const MAP_CODE = '#I00L17';
+      
+      copyBtn.addEventListener('click', async function() {
+        try {
+          await navigator.clipboard.writeText(MAP_CODE);
+          showCopiedFeedback();
+        } catch (err) {
+          // Fallback para navegadores antigos
+          const textArea = document.createElement('textarea');
+          textArea.value = MAP_CODE;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          showCopiedFeedback();
+        }
+      });
+      
+      function showCopiedFeedback() {
+        const btnText = copyBtn.querySelector('.btn-text');
+        const originalHTML = btnText.innerHTML;
+        
+        btnText.innerHTML = '<span class="icon">✓</span><span>Código Copiado!</span>';
+        copyBtn.classList.add('copied');
+        
+        setTimeout(() => {
+          btnText.innerHTML = '<span class="icon">📋</span><span>Copiar Código do Mapa</span>';
+          copyBtn.classList.remove('copied');
+        }, 2000);
+      }
+    });
+  </script>
+</body>
+</html>
